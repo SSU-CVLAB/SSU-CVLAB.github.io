@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Computer Vision Lab | Soongsil University</title>
+  <!-- Font Awesome -->
+  <!-- Bootstrap core CSS -->
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{{ url_for('static', filename='css/mdb.min.css') }}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{{ url_for('static', filename='css/style.min.css') }}" rel="stylesheet">
+  <style type="text/css">
+    html,
+    body,
+    header,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+      .navbar:not(.top-nav-collapse) {
+        background: #929FBA !important;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+      <div class="container">
+
+        <!-- Brand -->
+        <img style="margin-right:20px;" src="{{ url_for('static', filename='img/svg/logo.svg', quality=100) }}"></img>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#research" target="_self">Research</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/#publication" target="_self">Publication</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/member" target="_self">Members</a>
+            </li>
+          </ul>
+
+          <!-- Right -->
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a href="https://github.com/SSU-CVLAB" class="nav-link border border-light rounded"
+                target="_blank">
+                <i class="fab fa-github mr-2"></i>GitHub
+              </a>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!--Carousel Wrapper-->
+    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+
+      <!--Indicators-->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      </ol>
+      <!--/.Indicators-->
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+
+        <!--First slide-->
+        <div class="carousel-item active">
+          <div class="view" style="background-image: url('./static/img/main/scene1.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            <!-- Mask & flexbox options-->
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              <!-- Content -->
+              <div class="text-center white-text mx-5 wow fadeIn">
+                <h1 class="mb-4">
+                  <strong>Computer Vision Lab of Soongsil University</strong>
+                </h1>
+
+                <p>
+                  <strong>Our goal is to understand and analyze the microscopic change of kinetic or
+                    geostationary objects that invisible to a typical camera through ultra-high-speed imaging.</strong>
+                </p>
+
+                <p class="mb-4 d-none d-md-block">
+                  <strong></strong>
+                </p>
+
+                <a target="_blank" href="#" class="btn btn-outline-white btn-lg">Start
+                  View All Archive
+                  <i class="fas fa-archive ml-2"></i>
+                </a>
+              </div>
+              <!-- Content -->
+
+            </div>
+            <!-- Mask & flexbox options-->
+
+          </div>
+        </div>
+        <!--/First slide-->
+
+        <!--Second slide-->
+        <div class="carousel-item">
+          <div class="view" style="background-image: url('./static/img/main/scene2.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+            <!-- Mask & flexbox options-->
+            <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+
+              <!-- Content -->
+              <div class="text-center white-text mx-5 wow fadeIn">
+                 <h1 class="mb-4">
+                  <strong>Computer Vision Lab of Soongsil University</strong>
+                </h1>
+
+                <p>
+                  <strong>Our goal is to understand and analyze the microscopic change of kinetic or
+                    geostationary objects that invisible to a typical camera through ultra-high-speed imaging.</strong>
+                </p>
+
+
+                <p class="mb-4 d-none d-md-block">
+                  <strong></strong>
+                </p>
+
+                <a target="_blank" href="#" class="btn btn-outline-white btn-lg">Start
+                  View All Archive
+                  <i class="fas fa-archive ml-2"></i>
+                </a>
+              </div>
+              <!-- Content -->
+
+            </div>
+            <!-- Mask & flexbox options-->
+
+          </div>
+        </div>
+        <!--/Second slide-->
+
+      </div>
+      <!--/.Slides-->
+
+      <!--Controls-->
+      <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <!--/.Controls-->
+
+    </div>
+    <!--/.Carousel Wrapper-->
+
+  </header>
+
+  {% block content %}
+
+  {% endblock %}
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+
+    <!--/.Call to action-->
+    <hr class="my-3">
+
+    <!-- Social icons -->
+    <p>
+        Computer Vision Lab, School of Software, Soongsil University<br>
+        서울특별시 동작구 사당로 50 (상도동, 숭실대학교 정보과학관) 21302호 TEL: 02-826-1087
+    </p>
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+        Built with Bootstrap. Icons by FontAwesome. © 2019 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- FONTAWSOME -->
+  <script src="https://kit.fontawesome.com/b843fa0459.js" crossorigin="anonymous"></script>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <!-- Bootstrap tooltips -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/mdb.min.js') }}"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+</body>
+
+</html>
