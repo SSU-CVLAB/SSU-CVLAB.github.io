@@ -16,21 +16,21 @@ def index():
 @app.route('/member')
 def member():
     master = {'total': 5,
-              'image': ['jhmoon.jpg',
-                        'swchoi.jpg',
-                        'swjo.jpg',
-                        'mskim.jpg',
-                        'limin.jpg'],
+              'image': ['문지환.jpg',
+                        '최승욱.jpg',
+                        '조승우.jpg',
+                        '김민석.jpg',
+                        '염리민.jpg'],
               'name': ['문지환',
                        '최승욱',
                        '조승우',
                        '김민석',
                        '염리민'],
-              'position': ['Master Leader',
-                           'Master',
-                           'Master',
-                           'Master',
-                           'Master'],
+              'position': ['Researcher Leader',
+                           'Researcher',
+                           'Researcher',
+                           'Researcher',
+                           'Researcher'],
               'contact': ['E-mail: noel@soongsil.ac.kr',
                           'E-mail: ssnhe1234@naver.com',
                           'E-mail: presco317@naver.com',
@@ -108,7 +108,7 @@ def member():
                               '(주)블라우비트',
                               '에스큐엔지니어링',
                               '현대오토에버',
-                              '']}
+                              '(주)이지다이아텍']}
 
     return render_template('member.html', master_list=master, alumni_phD_list=alumni_phD, alumni_ms_list=alumni_MS, )
 

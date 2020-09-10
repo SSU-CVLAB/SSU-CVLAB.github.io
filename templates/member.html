@@ -17,7 +17,7 @@
 
           <!--Grid column 1-->
           <div class="col-lg-3 col-md-4 col-sm-4">
-            <img class="img-fluid z-depth-1-half" src="{{ url_for('static', filename='img/person/gykim.jpg') }}">
+            <img class="img-fluid z-depth-1-half" src="{{ url_for('static', filename='img/person/김계영.jpg') }}">
             <div style="height:30px"></div>
           </div>
           <!--/Grid column 1-->
@@ -104,7 +104,7 @@
         <div class="row wow fadeIn">
           {% for idx in range(master_list['total']) %}
           <!--Grid column 1-->
-          <div class="col-lg-2 col-md-4 col-sm-4 p-4">
+          <div class="col-lg-2 col-md-4 col-sm-4 col- p-4">
             <img class="img-fluid z-depth-1-half"
                  src="{{ url_for('static', filename='img/person/' + master_list['image'][idx]) }}">
           </div>
