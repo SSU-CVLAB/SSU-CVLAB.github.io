@@ -16,26 +16,26 @@ def index():
 @app.route('/member')
 def member():
     master = {'total': 5,
-              'image': ['문지환.jpg',
-                        '최승욱.jpg',
+              'image': ['최승욱.jpg',
                         '조승우.jpg',
                         '김민석.jpg',
-                        '염리민.jpg'],
-              'name': ['문지환',
-                       '최승욱',
+                        '염리민.jpg',
+                        '변성훈.jpg'],
+              'name': ['최승욱',
                        '조승우',
                        '김민석',
-                       '염리민'],
+                       '염리민',
+                       '변성훈'],
               'position': ['Researcher Leader',
                            'Researcher',
                            'Researcher',
                            'Researcher',
                            'Researcher'],
-              'contact': ['E-mail: noel@soongsil.ac.kr',
-                          'E-mail: ssnhe1234@naver.com',
+              'contact': ['E-mail: ssnhe1234@naver.com',
                           'E-mail: presco317@naver.com',
                           'E-mail: tkdzma8080@naver.com',
-                          'E-mail: yanlimin@naver.com']}
+                          'E-mail: yanlimin@naver.com',
+                          'E-mail: Sunghoon@soongsil.ac.kr']}
 
     alumni_phD = {'total': 5,
                   'image': ['이경주.jpg',
@@ -54,7 +54,7 @@ def member():
                                'Drexel University, USA',
                                'Editorial Board Member - International Journal of Image Processing, USA']}
 
-    alumni_MS = {'total': 18,
+    alumni_MS = {'total': 19,
                  'image': ['이사무엘.jpg',
                            '윤성조.jpg',
                            '김대윤.jpg',
@@ -72,7 +72,8 @@ def member():
                            '김만기.jpg',
                            '최지수.jpg',
                            '송누리.jpg',
-                           '최재갑.jpg'],
+                           '최재갑.jpg',
+                           '문지환.jpg'],
                  'name': ['이사무엘',
                           '윤성조',
                           '김대윤',
@@ -90,7 +91,8 @@ def member():
                           '김만기',
                           '최지수',
                           '송누리',
-                          '최재갑'],
+                          '최재갑',
+                          '문지환'],
                  'position': ['고백기술',
                               '텔레컨스',
                               '케이엘넷',
@@ -108,7 +110,8 @@ def member():
                               '(주)블라우비트',
                               '에스큐엔지니어링',
                               '현대오토에버',
-                              '(주)이지다이아텍']}
+                              '(주)이지다이아텍',
+                              '']}
 
     return render_template('member.html', master_list=master, alumni_phD_list=alumni_phD, alumni_ms_list=alumni_MS, )
 
