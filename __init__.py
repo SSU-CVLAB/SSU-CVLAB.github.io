@@ -31,11 +31,11 @@ def member():
                            'Researcher',
                            'Researcher',
                            'Researcher'],
-              'contact': ['E-mail: ssnhe1234@naver.com',
-                          'E-mail: presco317@naver.com',
-                          'E-mail: tkdzma8080@naver.com',
-                          'E-mail: yanlimin@naver.com',
-                          'E-mail: Sunghoon@soongsil.ac.kr']}
+              'contact': ['ssnhe1234@naver.com',
+                          'presco317@naver.com',
+                          'tkdzma8080@naver.com',
+                          'yanlimin@naver.com',
+                          'Sunghoon@soongsil.ac.kr']}
 
     alumni_phD = {'total': 5,
                   'image': ['이경주.jpg',
