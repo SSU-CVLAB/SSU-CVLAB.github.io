@@ -1,124 +1,93 @@
 from flask import Flask, url_for, render_template, url_for, request, redirect, session
 from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
+import sqlite3
+from easydict import EasyDict as edict
 
 app = Flask(__name__, static_folder='static')
 Bootstrap(app)
 app.debug = True
 app.config.update(DEBUG=True)
 
+db_path = "./static/db/data.db"
+con = sqlite3.connect(db_path)
+cursor = con.cursor()
+db_key = 'vision407'
+
 
 @app.route('/')
 def index():
-    return render_template('main.html')
+    with sqlite3.connect(db_path) as con:
+        cursor = con.cursor()
+        cursor.execute("SELECT Name, Context FROM explains ORDER BY Number asc")
+        contexts = cursor.fetchall()
+        context = edict()
+        for info in contexts:
+            context[info[0]] = []
+        for info in contexts:
+            context[info[0]].append(info[1])
+
+    return render_template('main.html', context=context)
 
 
 @app.route('/member')
 def member():
-    master = {'total': 5,
-              'image': ['최승욱.jpg',
-                        '조승우.jpg',
-                        '김민석.jpg',
-                        '염리민.jpg',
-                        '변성훈.jpg'],
-              'name': ['최승욱',
-                       '조승우',
-                       '김민석',
-                       '염리민',
-                       '변성훈'],
-              'position': ['Researcher Leader',
-                           'Researcher',
-                           'Researcher',
-                           'Researcher',
-                           'Researcher'],
-              'contact': ['ssnhe1234@naver.com',
-                          'presco317@naver.com',
-                          'tkdzma8080@naver.com',
-                          'yanlimin@naver.com',
-                          'Sunghoon@soongsil.ac.kr']}
+    with sqlite3.connect(db_path) as con:
+        cursor = con.cursor()
+        cursor.execute("SELECT Name, Position, Contact FROM member WHERE Alumni=0 and Grade=0")
+        members = cursor.fetchall()
 
-    alumni_phD = {'total': 5,
-                  'image': ['이경주.jpg',
-                            '김설호.jpg',
-                            '박영재.jpg',
-                            '장효종.jpg',
-                            '이나영.jpg'],
-                  'name': ['이경주',
-                           '김설호',
-                           '박영재',
-                           '장효종',
-                           '이나영'],
-                  'position': ['LG디스플레이',
-                               '오스템임플란트',
-                               '아이에프소프트',
-                               'Drexel University, USA',
-                               'Editorial Board Member - International Journal of Image Processing, USA']}
+        master = {'total': len(members),
+                  'image': [member[0] + '.jpg' for member in members],
+                  'name': [member[0] for member in members],
+                  'position': [member[1] for member in members],
+                  'contact': [member[2] for member in members]}
 
-    alumni_MS = {'total': 19,
-                 'image': ['이사무엘.jpg',
-                           '윤성조.jpg',
-                           '김대윤.jpg',
-                           '강은정.jpg',
-                           '김진서.jpg',
-                           '김경섭.jpg',
-                           '윤병훈.jpg',
-                           '샐리.jpg',
-                           '안권재.jpg',
-                           '황대동.jpg',
-                           '김상희.jpg',
-                           '권주형.jpg',
-                           '온진욱.jpg',
-                           '정석현.jpg',
-                           '김만기.jpg',
-                           '최지수.jpg',
-                           '송누리.jpg',
-                           '최재갑.jpg',
-                           '문지환.jpg'],
-                 'name': ['이사무엘',
-                          '윤성조',
-                          '김대윤',
-                          '강은정',
-                          '김진서',
-                          '김경섭',
-                          '윤병훈',
-                          '샐리',
-                          '안권재',
-                          '황대동',
-                          '김상희',
-                          '권주형',
-                          '온진욱',
-                          '정석현',
-                          '김만기',
-                          '최지수',
-                          '송누리',
-                          '최재갑',
-                          '문지환'],
-                 'position': ['고백기술',
-                              '텔레컨스',
-                              '케이엘넷',
-                              '메타넷엠씨씨',
-                              '아이브스',
-                              'LG디스플레이',
-                              'Immigration to Mexico',
-                              'Vietnam',
-                              '인지소프트',
-                              '보성정보통신',
-                              '삼성전기',
-                              '한미반도체',
-                              '(주)다사테크',
-                              '삼성전자 VD사업부',
-                              '(주)블라우비트',
-                              '에스큐엔지니어링',
-                              '현대오토에버',
-                              '(주)이지다이아텍',
-                              '']}
+        cursor.execute("SELECT Name, Position, Contact FROM member WHERE Alumni=1 and Grade=1")
+        members = cursor.fetchall()
 
-    return render_template('member.html', master_list=master, alumni_phD_list=alumni_phD, alumni_ms_list=alumni_MS, )
+        alumni_phD = {'total': len(members),
+                      'image': [member[0] + '.jpg' for member in members],
+                      'name': [member[0] for member in members],
+                      'position': [member[1] for member in members]}
+
+        cursor.execute("SELECT Name, Position, Contact FROM member WHERE Alumni=1 and Grade=0")
+        members = cursor.fetchall()
+
+        alumni_MS = {'total': len(members),
+                      'image': [member[0] + '.jpg' for member in members],
+                      'name': [member[0] for member in members],
+                      'position': [member[1] for member in members]}
+
+    return render_template('member.html',
+                           master_list=master,
+                           alumni_phD_list=alumni_phD,
+                           alumni_ms_list=alumni_MS)
 
 
-@app.route('/dataset')
-def dataset():
-    return render_template('dataset.html')
+# 게시물 생성 (Create)
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    if request.method == 'POST':
+        password = request.form['password']
+        if password is  db_key:
+            return redirect(url_for('admin'))
+        context = request.form['context']
+        with sqlite3.connect(db_path) as con:
+            cur = con.cursor()
+            cur.execute(context)
+            con.commit()
+        return redirect(url_for('admin'))
+
+    else:
+        with sqlite3.connect(db_path) as con:
+            cur = con.cursor()
+            cur.execute("SELECT * FROM member ORDER BY Id ASC")
+            members = cur.fetchall()
+            cur.execute("SELECT * FROM explains ORDER BY Name ASC")
+            explains = cur.fetchall()
+
+        return render_template('admin.html', members=members, explains=explains)
 
 
 if __name__ == "__main__":
