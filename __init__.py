@@ -9,7 +9,7 @@ Bootstrap(app)
 app.debug = True
 app.config.update(DEBUG=True)
 
-db_path = "./static/db/data.db"
+db_path = "C:/Project/cvlab/static/db/data.db"
 con = sqlite3.connect(db_path)
 cursor = con.cursor()
 db_key = 'vision407'
