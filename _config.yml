@@ -1,0 +1,26 @@
+# Site Info
+title: "Computer Vision Lab. | Soongsil Univ."
+tagline: ""
+description: ""
+baseurl: ""
+url: https://tamasino52.github.io
+logo: ""
+
+# Site configurations
+#gems:
+#  - jekyll-paginate
+#markdown: kramdown
+#kramdown:
+#  input: GFM
+#excerpt_separator: "<!-- more -->"
+sass:
+  style: compressed
+  sass_dir: _scss
+#paginate:
+#paginate_path: ''
+#permalink: pretty
+
+version: 1.0.0
+
+google_analytics:
+  ua: 'UA-134234881-1'
